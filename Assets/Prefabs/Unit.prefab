@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackController
   targetToAttack: {fileID: 0}
+  indicatorRenderer: {fileID: 5080976440369384690}
   idleStateMaterial: {fileID: 2100000, guid: 810172081634447409c81673f9b6100a, type: 2}
   followStateMaterial: {fileID: 2100000, guid: 325b5fd4ca3e4c04cabc3eb1a53b4c91, type: 2}
   attackStateMaterial: {fileID: 2100000, guid: 8c252988059e7b740a29479fe36c6c9d, type: 2}
