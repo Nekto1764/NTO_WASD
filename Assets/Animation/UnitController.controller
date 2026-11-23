@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b6c910c8a253246a22fc408a716ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitAttackState
-  stopAttackingDistance: 1.2
+  stopAttackingDistance: 3.2
   attackRate: 2
   attackTimer: 0
 --- !u!114 &-710902783765294231
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bd750fbd0e6034fa6ed993f4559441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitFollowState
-  attackingDistance: 1
+  attackingDistance: 3
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -254,7 +254,7 @@ AnimatorStateMachine:
     m_Position: {x: 334.19434, y: 196.31589, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6642650229755695895}
-    m_Position: {x: 376.4187, y: 64.81891, z: 0}
+    m_Position: {x: 380, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7804177678116948068}
     m_Position: {x: 485.54065, y: -37.97711, z: 0}
@@ -276,7 +276,7 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
+  - m_ConditionMode: 2
     m_ConditionEvent: isFollowing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
