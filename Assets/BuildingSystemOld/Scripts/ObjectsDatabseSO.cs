@@ -18,9 +18,8 @@ public class ObjectsDatabaseSO : ScriptableObject
             }
         }
 
-        return new(); // This cannot happen
+        return new();
     }
-
 }
 
 public enum BuildingType
@@ -33,8 +32,7 @@ public enum BuildingType
 public enum UnitType
 {
     None,
-    InfantryUnit,
-    Harvester
+    Spearman
 }
 
 [System.Serializable]
@@ -89,7 +87,6 @@ public class BuildBenefits
     {
         Housing
     }
-
 
     public string benefit;
     public Sprite benefitIcon;

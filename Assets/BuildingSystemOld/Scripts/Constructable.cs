@@ -16,6 +16,8 @@ public class Constructable : MonoBehaviour, IDamageable
 
     public BuildingType buildingType;
 
+    public Vector3 buildPosition; 
+
     private void Start()
     {
         constHealth = constMaxHealth;
@@ -28,7 +30,7 @@ public class Constructable : MonoBehaviour, IDamageable
 
         if (constHealth <= 0)
         {
-            ResourceManager.Instance.UpdateBuildingChanged(buildingType, false);
+            ResourceManager.Instance.UpdateBuildingChanged(buildingType, false, buildPosition);
 
             Destroy(gameObject);
         }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2317201660009287690}
   - component: {fileID: 699409706510588090}
   - component: {fileID: 5123323865942468544}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 1229676393744977835}
   - component: {fileID: 5616587290532763039}
   - component: {fileID: 4237107852970295432}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,6 +158,7 @@ MonoBehaviour:
   healthTracker: {fileID: 5123323865942468544}
   isEnemy: 0
   buildingType: 1
+  buildPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &4237107852970295432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -191,7 +192,7 @@ GameObject:
   - component: {fileID: 302854573724182314}
   - component: {fileID: 4788581350653241658}
   - component: {fileID: 1491327615888650459}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +282,7 @@ GameObject:
   - component: {fileID: 8244096745933819641}
   - component: {fileID: 7027612459192543858}
   - component: {fileID: 921062572234142689}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +358,7 @@ GameObject:
   - component: {fileID: 138933403670685870}
   - component: {fileID: 3066500205891130224}
   - component: {fileID: 6806291604871569951}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UnitUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +459,7 @@ GameObject:
   - component: {fileID: 4265168712239544976}
   - component: {fileID: 645381215185036662}
   - component: {fileID: 557897114331420517}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1749834102826185547}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2691684493970028433}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +607,7 @@ GameObject:
   - component: {fileID: 7413217623995983014}
   - component: {fileID: 6426675994503195435}
   - component: {fileID: 4442509761952943785}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7665736255477380649}
   - component: {fileID: 5112338600072230334}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBarSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

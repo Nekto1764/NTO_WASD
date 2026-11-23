@@ -60,10 +60,12 @@ public class PlacementState : IBuildingState
         ResourceManager.Instance.DecreaseResourcesBasedOnRequirement(database.objectsData[selectedObjectIndex]);
 
         BuildingType buildingType = database.objectsData[selectedObjectIndex].thisBuildingType;
-        ResourceManager.Instance.UpdateBuildingChanged(buildingType, true);
+        ResourceManager.Instance.UpdateBuildingChanged(buildingType, true, new Vector3());
 
         // If this id is a floor id, then its a floor data, else its a furniture data
-        GridData selectedData = GetAllFloorIDs().Contains(database.objectsData[selectedObjectIndex].ID) ? floorData : furnitureData;
+        // GridData selectedData = GetAllFloorIDs().Contains(database.objectsData[selectedObjectIndex].ID) ? floorData : furnitureData;
+
+        GridData selectedData = floorData;
        
         selectedData.AddObjectAt(gridPosition,
             database.objectsData[selectedObjectIndex].Size,
@@ -81,7 +83,9 @@ public class PlacementState : IBuildingState
 
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
-        GridData selectedData = GetAllFloorIDs().Contains(database.objectsData[selectedObjectIndex].ID) ? floorData : furnitureData;
+        // GridData selectedData = GetAllFloorIDs().Contains(database.objectsData[selectedObjectIndex].ID) ? floorData : furnitureData;
+
+        GridData selectedData = floorData;
 
         if (!selectedData.CanPlaceObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size))
         {

@@ -30,6 +30,8 @@ public class ResourceManager : MonoBehaviour
 
     public List<BuildingType> allExistiongBuildings;
 
+    public PlacementSystem placementSystem;
+
     public enum ResourcesType
     {
         Credits
@@ -40,7 +42,7 @@ public class ResourceManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void UpdateBuildingChanged(BuildingType buildingType, bool isNew)
+    public void UpdateBuildingChanged(BuildingType buildingType, bool isNew, Vector3 position)
     {
         if (isNew)
         {
@@ -48,6 +50,7 @@ public class ResourceManager : MonoBehaviour
         }
         else
         {
+            placementSystem.RemovePlacementData(position);
             allExistiongBuildings.Remove(buildingType);
         }
 
