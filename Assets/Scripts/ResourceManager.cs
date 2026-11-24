@@ -21,21 +21,20 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    public int credits = 300;
+    public int wood = 100;
+    public int stone = 100;
+    public int population = 10;
 
     public event Action OnResourceChanged;
     public event Action OnBuildingsChanged;
 
-    public TextMeshProUGUI creditsUI;
+    public TextMeshProUGUI woodUI;
+    public TextMeshProUGUI stoneUI;
+    public TextMeshProUGUI populationUI;
 
     public List<BuildingType> allExistiongBuildings;
 
     public PlacementSystem placementSystem;
-
-    public enum ResourcesType
-    {
-        Credits
-    }
 
     private void Start()
     {
@@ -57,12 +56,18 @@ public class ResourceManager : MonoBehaviour
         OnBuildingsChanged?.Invoke();
     }
 
-    public void IncreaseResource(ResourcesType resource, int amountToIncrease)
+    public void IncreaseResource(ResourceType resource, int amountToIncrease)
     {
         switch (resource)
         {
-            case ResourcesType.Credits:
-                credits += amountToIncrease;
+            case ResourceType.Wood:
+                wood += amountToIncrease;
+                break;
+            case ResourceType.Stone:
+                stone += amountToIncrease;
+                break;
+            case ResourceType.Population:
+                population += amountToIncrease;
                 break;
             default:
                 break;
@@ -71,12 +76,18 @@ public class ResourceManager : MonoBehaviour
         OnResourceChanged?.Invoke();
     }
 
-    public void DecreaseResource(ResourcesType resource, int amountToIncrease)
+    public void DecreaseResource(ResourceType resource, int amountToIncrease)
     {
         switch (resource)
         {
-            case ResourcesType.Credits:
-                credits -= amountToIncrease;
+            case ResourceType.Wood:
+                wood -= amountToIncrease;
+                break;
+            case ResourceType.Stone:
+                stone -= amountToIncrease;
+                break;
+            case ResourceType.Population:
+                population -= amountToIncrease;
                 break;
             default:
                 break;
@@ -97,20 +108,36 @@ public class ResourceManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        creditsUI.text = $"{credits}";
+        woodUI.text = $"[Wood] {wood}";
+        stoneUI.text = $"[Stone] {stone}";
+        populationUI.text = $"{population} [Population]";
     }
 
-    public int GetCredits()
+    public int GetWood()
     {
-        return credits;
+        return wood;
     }
 
-    internal int GetResourceAmount(ResourcesType resource)
+    public int GetStone()
+    {
+        return wood;
+    }
+
+    public int GetPopulation()
+    {
+        return population;
+    }
+
+    internal int GetResourceAmount(ResourceType resource)
     {
         switch (resource)
         {
-            case ResourcesType.Credits:
-                return credits;
+            case ResourceType.Wood:
+                return wood;
+            case ResourceType.Stone:
+                return stone;
+            case ResourceType.Population:
+                return population;
             default:
                 break;
         }
@@ -124,4 +151,15 @@ public class ResourceManager : MonoBehaviour
             DecreaseResource(req.resource, req.amount);
         }
     }
+}
+
+
+public enum ResourceType
+{
+    None,
+    
+    Wood,
+    Stone,
+
+    Population
 }

@@ -5,11 +5,11 @@ public class Unit : MonoBehaviour, IDamageable
     private float unitHealth;
     public float unitMaxHealth;
 
-    public HealthTracker healthTracker;
+    // public HealthTracker healthTracker;
     
     void Start()
     {
-        UnitSelectionManager.Instance.allUnitsList.Add(gameObject);
+        // UnitSelectionManager.Instance.allUnitsList.Add(gameObject);
 
         unitHealth = unitMaxHealth;
         UpdateHealthUI();
@@ -17,7 +17,7 @@ public class Unit : MonoBehaviour, IDamageable
 
     private void OnDestroy()
     {
-        UnitSelectionManager.Instance.allUnitsList.Remove(gameObject);
+        // UnitSelectionManager.Instance.allUnitsList.Remove(gameObject);
     }
 
     public void TakeDamage(int damageToInflict)
@@ -28,7 +28,7 @@ public class Unit : MonoBehaviour, IDamageable
 
     private void UpdateHealthUI()
     {
-        healthTracker.UpdateSliderValue(unitHealth, unitMaxHealth);
+        // healthTracker.UpdateSliderValue(unitHealth, unitMaxHealth);
 
         if (unitHealth <= 0)
         {

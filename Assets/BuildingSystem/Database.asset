@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e56b260b889d20f489dee1850fdf0394, type: 3}
+  m_Name: Database
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectsDatabaseSO
+  objectsData:
+  - <Name>k__BackingField: Town Hall
+    <ID>k__BackingField: 0
+    <thisBuildingType>k__BackingField: 1
+    <thisUnitType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 1680725197707449239, guid: 62e98496d309de64e8be8815baea3afd, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 2
+      amount: 25
+    - resource: 1
+      amount: 50
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+  - <Name>k__BackingField: Residential Building
+    <ID>k__BackingField: 1
+    <thisBuildingType>k__BackingField: 2
+    <thisUnitType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 8226979386469834733, guid: 87e3263bcfdd56c469c7206bd658e3e5, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 2
+      amount: 25
+    - resource: 1
+      amount: 25
+    <buildDependency>k__BackingField: 01000000
+    <benefits>k__BackingField: []
+  - <Name>k__BackingField: Barrack
+    <ID>k__BackingField: 2
+    <thisBuildingType>k__BackingField: 3
+    <thisUnitType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 6199442401702308644, guid: e725e8d1b9677884e94fb0423410ffd7, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 2
+      amount: 50
+    <buildDependency>k__BackingField: 01000000
+    <benefits>k__BackingField: []
+  - <Name>k__BackingField: Sawmill
+    <ID>k__BackingField: 3
+    <thisBuildingType>k__BackingField: 4
+    <thisUnitType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 8699007448653005806, guid: f666e985d3e886a42b6bcc8e57dabded, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 1
+      amount: 25
+    - resource: 2
+      amount: 2
+    <buildDependency>k__BackingField: 01000000
+    <benefits>k__BackingField: []
+  - <Name>k__BackingField: Quarry
+    <ID>k__BackingField: 4
+    <thisBuildingType>k__BackingField: 5
+    <thisUnitType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 4147708457199173142, guid: 8f4d2ca3c018eba43b3dd4b36a0920a5, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 1
+      amount: 50
+    - resource: 2
+      amount: 25
+    <buildDependency>k__BackingField: 01000000
+    <benefits>k__BackingField: []
