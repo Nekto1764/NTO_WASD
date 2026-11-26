@@ -2,38 +2,66 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    private float unitHealth;
     public float unitMaxHealth;
-
     public HealthTracker healthTracker;
-    
-    void Start()
-    {
-        UnitSelectionManager.Instance.allUnitsList.Add(gameObject);
 
-        unitHealth = unitMaxHealth;
-        UpdateHealthUI();
+    public bool IsDead { get; private set; }
+
+    private float currentHealth;
+
+    private void Start()
+    {
+        Register();
+        currentHealth = unitMaxHealth;
+        RefreshHealthUI();
     }
 
     private void OnDestroy()
     {
-        UnitSelectionManager.Instance.allUnitsList.Remove(gameObject);
+        Unregister();
     }
 
-    internal void TakeDamage(int damageToInflict)
+    internal void TakeDamage(int amount)
     {
-        unitHealth -= damageToInflict;
-        UpdateHealthUI();
+        if (IsDead) return;
+
+        currentHealth -= amount;
+        RefreshHealthUI();
     }
 
-    private void UpdateHealthUI()
+    private void Register()
     {
-        healthTracker.UpdateSliderValue(unitHealth, unitMaxHealth);
-
-        if (unitHealth <= 0)
+        if (UnitSelectionManager.Instance != null)
         {
-            //
-            Destroy(gameObject);
+            UnitSelectionManager.Instance.allUnitsList.Add(gameObject);
         }
+    }
+
+    private void Unregister()
+    {
+        if (UnitSelectionManager.Instance != null)
+        {
+            UnitSelectionManager.Instance.allUnitsList.Remove(gameObject);
+        }
+    }
+
+    private void RefreshHealthUI()
+    {
+        if (healthTracker != null)
+        {
+            healthTracker.UpdateSliderValue(currentHealth, unitMaxHealth);
+        }
+
+        if (!IsDead && currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        IsDead = true;
+        Unregister();
+        Destroy(gameObject);
     }
 }
