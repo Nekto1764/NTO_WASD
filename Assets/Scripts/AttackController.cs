@@ -159,7 +159,9 @@ public class AttackController : MonoBehaviour
             if (IsDeadUnit(obj)) continue;
 
             AttackController other = obj.GetComponent<AttackController>();
-            if (other == null || other.isPlayer == isPlayer) continue;
+            bool otherIsPlayer = other != null ? other.isPlayer : !isPlayer;
+            if (other == null && obj.GetComponent<Unit>() == null) continue;
+            if (otherIsPlayer == isPlayer) continue;
 
             float distance = GetEdgeDistanceTo(obj.transform);
             if (distance <= minDistance)
