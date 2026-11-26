@@ -16,7 +16,7 @@ public class UnitMovement : MonoBehaviour
         cam = Camera.main;
         agent = GetComponent<NavMeshAgent>();
 
-        Debug.Log("UnitMovement Start");
+        // Debug.Log("UnitMovement Start");
     }
 
     private void Update() {
@@ -41,13 +41,13 @@ public class UnitMovement : MonoBehaviour
 
         if (isPlayerCommand)
         {
-            Lumberjack lumberjack = GetComponent<Lumberjack>();
+            Gatherer gatherer = GetComponent<Gatherer>();
 
-            if (lumberjack != null)
+            if (gatherer != null)
             {
-                if (lumberjack.assignedTree == null || Vector3.Distance(lumberjack.assignedTree.position, position) > 2f)
+                if (gatherer.assignedNode == null || Vector3.Distance(gatherer.assignedNode.position, position) > 2f)
                 {
-                    lumberjack.CancelHarvesting();
+                    gatherer.CancelHarvesting();
                 }
             }
         }

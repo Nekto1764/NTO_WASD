@@ -78,15 +78,15 @@ public class PlacementState : IBuildingState
         }
 
         Vector3 worldPosition = grid.CellToWorld(gridPosition);
-        Collider[] colliders = Physics.OverlapBox(worldPosition, new Vector3(0.5f, 0.5f, 0.5f), Quaternion.identity);
+        // Collider[] colliders = Physics.OverlapBox(worldPosition, new Vector3(0.5f, 0.5f, 0.5f), Quaternion.identity);
 
-        foreach (var collider in colliders)
-        {
-            if (collider.CompareTag("Unit") || collider.CompareTag("Enemy"))
-            {
-                return false;
-            }
-        }
+        // foreach (var collider in colliders)
+        // {
+        //     if (collider.CompareTag("Unit") || collider.CompareTag("Enemy"))
+        //     {
+        //         return false;
+        //     }
+        // }
 
         return true;
     }

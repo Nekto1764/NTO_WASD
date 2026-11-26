@@ -9,7 +9,7 @@ public class PlacementSystem : MonoBehaviour
 {
 
     [SerializeField] private InputManager inputManager;
-    [SerializeField] private Grid grid;
+    public Grid grid;
 
     [SerializeField] private ObjectsDatabaseSO database;
 
@@ -19,25 +19,27 @@ public class PlacementSystem : MonoBehaviour
 
     private Vector3Int lastDetectedPosition = Vector3Int.zero;
 
-    [SerializeField] private ObjectPlacer objectPlacer;
+    public ObjectPlacer objectPlacer;
 
     int selectedID;
 
     public IBuildingState buildingState;
 
+    public bool inSellMode;
+
     private void Start()
     {
         floorData = new();
-        Debug.Log($"Start {floorData == null}");
+        // Debug.Log($"Start {floorData == null}");
     }
 
     public void StartPlacement(int ID)
     {
-        Debug.Log("Should Start Placement");
+        // Debug.Log("Should Start Placement");
 
         selectedID = ID;
 
-        Debug.Log("Placement ID: " + ID);
+        // Debug.Log("Placement ID: " + ID);
 
 
         StopPlacement();
@@ -52,10 +54,15 @@ public class PlacementSystem : MonoBehaviour
     {
         StopPlacement();
 
+        // Debug.Log("StartRemoving");
+
         buildingState = new RemovingState(grid, previewSystem, floorData, objectPlacer);
 
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
+
+        inputManager.OnClicked += EndSelling;
+        inputManager.OnExit += EndSelling;
     }
 
     public void RemovePlacementData(Vector3 position)
@@ -66,14 +73,14 @@ public class PlacementSystem : MonoBehaviour
     private void PlaceStructure()
     {
         if (inputManager.IsPointerOverUI()){
-            Debug.Log("Pointer was over UI - Returned");
+            // Debug.Log("Pointer was over UI - Returned");
             return;
         }
 
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
-        Debug.Log(gridPosition);
+        // Debug.Log(gridPosition);
 
         buildingState.OnAction(gridPosition);
 
@@ -86,6 +93,11 @@ public class PlacementSystem : MonoBehaviour
         }
 
         StopPlacement();
+    }
+
+    private void EndSelling()
+    {
+        inSellMode = false;
     }
 
     public void PlaceStructureTo(Vector3Int gridPosition)
@@ -141,6 +153,12 @@ public class PlacementSystem : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            inSellMode = true;
+            StartRemoving();
+        }
+
         if (buildingState == null)
             return;
       

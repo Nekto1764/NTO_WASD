@@ -613,8 +613,9 @@ GameObject:
   - component: {fileID: 3651098787771774434}
   - component: {fileID: 9085123292444210172}
   - component: {fileID: 5064923970662830460}
+  - component: {fileID: 1968590447828339308}
   m_Layer: 7
-  m_Name: Lumberjack
+  m_Name: Gatherer
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,12 +751,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc465fc4c2ac16b49afe63b68c278444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lumberjack
-  assignedTree: {fileID: 0}
-  sawmill: {fileID: 0}
+  assignedNode: {fileID: 0}
+  gathererStructure: {fileID: 0}
   harvestAmountPerSecond: 5
   maxCapacity: 10
   capacitySlider: {fileID: 7556134000913566751}
-  currentResourceType: 1
+  currentResourceType: 0
 --- !u!135 &1469722071630219056
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -833,7 +834,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isCommandedToMove: 0
-  allowManualInput: 1
+  allowManualInput: 0
 --- !u!95 &5064923970662830460
 Animator:
   serializedVersion: 7
@@ -856,3 +857,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1968590447828339308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096443438297829831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 4
+  outlineColor: {r: 0.16472125, g: 1, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

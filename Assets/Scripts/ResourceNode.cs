@@ -22,6 +22,7 @@ public class ResourceNode : MonoBehaviour
 
         if (IsDepleted)
         {
+            
             Destroy(gameObject);
         }
     }

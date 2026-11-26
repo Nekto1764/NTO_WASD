@@ -20,11 +20,7 @@ MonoBehaviour:
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 1680725197707449239, guid: 62e98496d309de64e8be8815baea3afd, type: 3}
-    <resourceRequirements>k__BackingField:
-    - resource: 2
-      amount: 25
-    - resource: 1
-      amount: 50
+    <resourceRequirements>k__BackingField: []
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
   - <Name>k__BackingField: Residential Building
@@ -36,9 +32,9 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 8226979386469834733, guid: 87e3263bcfdd56c469c7206bd658e3e5, type: 3}
     <resourceRequirements>k__BackingField:
     - resource: 2
-      amount: 25
+      amount: 50
     - resource: 1
-      amount: 25
+      amount: 50
     <buildDependency>k__BackingField: 01000000
     <benefits>k__BackingField: []
   - <Name>k__BackingField: Barrack
@@ -63,8 +59,8 @@ MonoBehaviour:
     <resourceRequirements>k__BackingField:
     - resource: 1
       amount: 25
-    - resource: 2
-      amount: 2
+    - resource: 3
+      amount: 1
     <buildDependency>k__BackingField: 01000000
     <benefits>k__BackingField: []
   - <Name>k__BackingField: Quarry
@@ -77,7 +73,5 @@ MonoBehaviour:
     <resourceRequirements>k__BackingField:
     - resource: 1
       amount: 50
-    - resource: 2
-      amount: 25
     <buildDependency>k__BackingField: 01000000
     <benefits>k__BackingField: []

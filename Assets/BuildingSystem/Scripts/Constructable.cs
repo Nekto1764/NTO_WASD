@@ -14,6 +14,8 @@ public class Constructable : MonoBehaviour, IDamageable
 
     public bool isEnemy = false;
 
+    public Gatherer joinedGatherer;
+
     public BuildingType buildingType;
 
     public Vector3 buildPosition; 
@@ -58,7 +60,7 @@ public class Constructable : MonoBehaviour, IDamageable
         }
         if (buildingType == BuildingType.Sawmill)
         {
-            GameObject prefab = Resources.Load<GameObject>("Lumberjack");
+            GameObject prefab = Resources.Load<GameObject>("Gatherer");
 
             if (prefab != null)
             {
@@ -66,9 +68,31 @@ public class Constructable : MonoBehaviour, IDamageable
                 GameObject instance = Instantiate(prefab, supplyDropTransform.position, Quaternion.identity);
                 instance.transform.SetParent(null);
 
-                Lumberjack lumberjack = instance.GetComponent<Lumberjack>();
-                lumberjack.sawmill = supplyDropTransform;
+                Gatherer gatherer = instance.GetComponent<Gatherer>();
+                gatherer.currentResourceType = ResourceType.Wood;
+                gatherer.gathererStructure = supplyDropTransform;
+                joinedGatherer = gatherer;
             }
+        }
+        else if (buildingType == BuildingType.Quarry)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Gatherer");
+
+            if (prefab != null)
+            {
+                Transform supplyDropTransform = transform.Find("SupplyDrop").transform;
+                GameObject instance = Instantiate(prefab, supplyDropTransform.position, Quaternion.identity);
+                instance.transform.SetParent(null);
+
+                Gatherer gatherer = instance.GetComponent<Gatherer>();
+                gatherer.currentResourceType = ResourceType.Stone;
+                gatherer.gathererStructure = supplyDropTransform;
+                joinedGatherer = gatherer;
+            }
+        }
+        else if (buildingType == BuildingType.ResidentialBuilding)
+        {
+            ResourceManager.Instance.IncreaseResource(ResourceType.Population, 2);
         }
     }
 

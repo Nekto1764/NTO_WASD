@@ -4,11 +4,11 @@ public class DepositingState : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       Lumberjack lumberjack = animator.GetComponent<Lumberjack>();
+       Gatherer gatherer = animator.GetComponent<Gatherer>();
 
-       if (lumberjack != null)
+       if (gatherer != null)
         {
-            lumberjack.DepositResources();
+            gatherer.DepositResources();
         }
     }
 }

@@ -33,7 +33,7 @@ sealed class ReadmeEditor : Editor
         var ids = AssetDatabase.FindAssets("Readme t:Readme");
         if (ids.Length != 1)
         {
-            Debug.Log("Couldn't find a readme");
+            // Debug.Log("Couldn't find a readme");
             return null;
         }
 
@@ -57,7 +57,7 @@ sealed class ReadmeEditor : Editor
             }
             else
             {
-                Debug.Log($"Could not find the Readme folder at {k_ReadmeSourceDirectory}");
+                // Debug.Log($"Could not find the Readme folder at {k_ReadmeSourceDirectory}");
             }
 
             var readmeAsset = SelectReadme();

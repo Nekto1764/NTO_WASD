@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class Lumberjack : MonoBehaviour
+public class Gatherer : MonoBehaviour
 {
-    public Transform assignedTree;
-    public Transform sawmill;
+    public Transform assignedNode;
+    public Transform gathererStructure;
     public float harvestAmountPerSecond = 5f;
 
     public float maxCapacity = 10f;
@@ -15,7 +15,7 @@ public class Lumberjack : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     private bool isDepositing = false;
-    private bool treesExist = true;
+    private bool nodeExist = true;
 
     public Slider capacitySlider;
 
@@ -48,41 +48,44 @@ public class Lumberjack : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
-        currentResourceType = ResourceType.Wood;
+        currentResourceType = ResourceType.None;
     }
 
-    public void AppointAssignedTree()
+    public void AppointAssignedNode()
     {
-        Transform treesFinder = sawmill.GetChild(0);
-        Debug.Log(treesFinder);
-        FindTrees findTrees = treesFinder.GetComponent<FindTrees>();
+        Transform finderTransform = gathererStructure.GetChild(0);
+        Finder finder = finderTransform.GetComponent<Finder>();
 
-        List<GameObject> gameObjects = findTrees.GetObjectsInRadius();
+        List<GameObject> gameObjects = finder.GetObjectsInRadius();
 
         if (gameObjects.Count > 0)
         {
-            assignedTree = gameObjects[0].transform;
+            assignedNode = gameObjects[0].transform;
         }
         else
         {
-            treesExist = false;
+            nodeExist = false;
         }
     }
 
     void Update()
     {
-        animator.SetBool("hasAssignedTree", assignedTree != null);
+        animator.SetBool("hasAssignedNode", assignedNode != null);
         animator.SetBool("isFull", CurrentCapacity >= maxCapacity);
         animator.SetBool("isNotEmpty", CurrentCapacity > 0);
 
-        if (assignedTree != null && assignedTree.GetComponent<ResourceNode>().IsDepleted)
+        if (assignedNode != null && assignedNode.GetComponent<ResourceNode>().IsDepleted)
         {
-            assignedTree = null;
-            animator.SetBool("hasAssignedTree", false);
+            assignedNode = null;
+            animator.SetBool("hasAssignedNode", false);
         }
-        else if (assignedTree == null && treesExist)
+        else if (assignedNode == null && nodeExist && !animator.GetBool("isNotEmpty"))
         {
-            AppointAssignedTree();
+            AppointAssignedNode();
+        }
+        else if (assignedNode == null && !animator.GetBool("atSupply"))
+        {
+            MoveTo(gathererStructure);
         }
     }
 
@@ -100,18 +103,18 @@ public class Lumberjack : MonoBehaviour
 
     public void CancelHarvesting()
     {
-        assignedTree = null;
-        animator.SetBool("hasAssignedTree", false);
-        animator.SetBool("atTree", false);
+        assignedNode = null;
+        animator.SetBool("hasAssignedNode", false);
+        animator.SetBool("atNode", false);
     }
 
     public void Harvest()
     {
-        if (assignedTree == null) return;
+        if (assignedNode == null) return;
 
-        if (assignedTree != null && !assignedTree.GetComponent<ResourceNode>().IsDepleted)
+        if (assignedNode != null && !assignedNode.GetComponent<ResourceNode>().IsDepleted)
         {
-            ResourceNode node = assignedTree.GetComponent<ResourceNode>();
+            ResourceNode node = assignedNode.GetComponent<ResourceNode>();
             currentResourceType = node.resourceType;
 
             node.Harvest(harvestAmountPerSecond * Time.deltaTime);
@@ -153,9 +156,9 @@ public class Lumberjack : MonoBehaviour
 
         isDepositing = false;
 
-        if (assignedTree != null)
+        if (assignedNode != null)
         {
-             animator.SetTrigger("doneDepositing");
+            animator.SetTrigger("doneDepositing");
         }
 
         currentResourceType = ResourceType.None;
@@ -169,16 +172,19 @@ public class Lumberjack : MonoBehaviour
             case ResourceType.Wood:
                 ResourceManager.Instance.IncreaseResource(ResourceType.Wood, (int)tempCapacity);
                 return;
+            case ResourceType.Stone:
+                ResourceManager.Instance.IncreaseResource(ResourceType.Stone, (int)tempCapacity);
+                return;
         }
     }
 
     private void OnTriggerEnter(Collider other) // Use onTriggerStay instead to check if the agent stopped moving.
     {
-        if (assignedTree != null && other.transform == assignedTree)
+        if (assignedNode != null && other.transform == assignedNode)
         {
-            animator.SetBool("atTree", true);
+            animator.SetBool("atNode", true);
         }
-        else if (sawmill != null && other.transform == sawmill)
+        else if (gathererStructure != null && other.transform == gathererStructure)
         {
             animator.SetBool("atSupply", true);
         }
@@ -186,11 +192,11 @@ public class Lumberjack : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (assignedTree != null && other.transform == assignedTree)
+        if (assignedNode != null && other.transform == assignedNode)
         {
-            animator.SetBool("atTree", false);
+            animator.SetBool("atNode", false);
         }
-        else if (sawmill != null && other.transform == sawmill)
+        else if (gathererStructure != null && other.transform == gathererStructure)
         {
             animator.SetBool("atSupply", false);
         }

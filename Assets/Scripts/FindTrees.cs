@@ -26,7 +26,7 @@ public class FindTrees : MonoBehaviour
             }
         }
 
-        Debug.Log($"[{foundObjects.Count}]");
+        // Debug.Log($"[{foundObjects.Count}]");
 
         return foundObjects;
     }

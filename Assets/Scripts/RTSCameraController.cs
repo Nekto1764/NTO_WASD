@@ -23,7 +23,7 @@ public class RTSCameraController : MonoBehaviour
     [SerializeField] bool moveWithMouseDrag;
  
     [Header("Keyboard Movement")]
-    [SerializeField] float fastSpeed = 0.05f;
+    // [SerializeField] float fastSpeed = 0.05f;
     [SerializeField] float normalSpeed = 0.01f;
     [SerializeField] float movementSensitivity = 1f;
     float movementSpeed;
