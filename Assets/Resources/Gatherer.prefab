@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 2455715995964295390}
   - component: {fileID: 1471467854986971565}
   m_Layer: 7
-  m_Name: Capacitytracker
+  m_Name: CapacityTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3832353209432710099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55a92428bc7c820478ef8eb10d0fbc28, type: 3}
+  m_Script: {fileID: 11500000, guid: b17d8d42da41bb94b93e95e3fa32d987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FaceCamera
 --- !u!1 &5112447311003430803
@@ -726,7 +726,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8096443438297829831}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -814,10 +814,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8096443438297829831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f5b29ab56baa1f4ba54a977ebbe4db3, type: 3}
+  m_Script: {fileID: 11500000, guid: 4eaa5edb124a77b40925d7c324a7d745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unit
   unitMaxHealth: 100
+  healthTracker: {fileID: 0}
+  isGatherer: 1
 --- !u!114 &9085123292444210172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,14 +829,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8096443438297829831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0d66e0d70b55f46974383d91d5f2ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 67d855ee0dcf1d0438032a340dd5ca3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
+  moveSpeed: 3
+  acceleration: 12
+  stoppingDistance: 0.2
+  agentRadius: 0.6
+  turnSpeed: 360
   ground:
     serializedVersion: 2
     m_Bits: 64
   isCommandedToMove: 0
   allowManualInput: 0
+  applyMovementSettings: 0
 --- !u!95 &5064923970662830460
 Animator:
   serializedVersion: 7
@@ -869,9 +877,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 4
-  outlineColor: {r: 0.16472125, g: 1, b: 0, a: 1}
-  outlineWidth: 0
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
