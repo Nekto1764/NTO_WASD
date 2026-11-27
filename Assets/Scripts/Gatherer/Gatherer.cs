@@ -170,10 +170,10 @@ public class Gatherer : MonoBehaviour
         switch (currentResourceType)
         {
             case ResourceType.Wood:
-                ResourceManager.Instance.IncreaseResource(ResourceType.Wood, (int)tempCapacity*ResourceManager.Instance.woodCoefficient);
+                ResourceManager.Instance.IncreaseResource(ResourceType.Wood, (int)tempCapacity);
                 return;
             case ResourceType.Stone:
-                ResourceManager.Instance.IncreaseResource(ResourceType.Stone, (int)tempCapacity*ResourceManager.Instance.stoneCoefficient);
+                ResourceManager.Instance.IncreaseResource(ResourceType.Stone, (int)tempCapacity);
                 return;
         }
     }

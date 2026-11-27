@@ -2,73 +2,38 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour, IDamageable
 {
+    private float unitHealth;
     public float unitMaxHealth;
-    public HealthTracker healthTracker;
-    public bool isGatherer = false;
 
-    public bool IsDead { get; private set; }
-
-    private float currentHealth;
-
-    private void Start()
+    // public HealthTracker healthTracker;
+    
+    void Start()
     {
-        Register();
-        currentHealth = unitMaxHealth;
-        RefreshHealthUI();
+        // UnitSelectionManager.Instance.allUnitsList.Add(gameObject);
+
+        unitHealth = unitMaxHealth;
+        UpdateHealthUI();
     }
 
     private void OnDestroy()
     {
-        Unregister();
+        // UnitSelectionManager.Instance.allUnitsList.Remove(gameObject);
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int damageToInflict)
     {
-        if (IsDead) return;
-
-        currentHealth -= amount;
-        RefreshHealthUI();
+        unitHealth -= damageToInflict;
+        UpdateHealthUI();
     }
 
-    private void Register()
+    private void UpdateHealthUI()
     {
-        if (UnitSelectionManager.Instance != null)
+        // healthTracker.UpdateSliderValue(unitHealth, unitMaxHealth);
+
+        if (unitHealth <= 0)
         {
-            if (!isGatherer)
-            {
-                UnitSelectionManager.Instance.allUnitsList.Add(gameObject);
-            }
+            //
+            Destroy(gameObject);
         }
-    }
-
-    private void Unregister()
-    {
-        if (UnitSelectionManager.Instance != null)
-        {
-            if (!isGatherer)
-            {
-                UnitSelectionManager.Instance.allUnitsList.Remove(gameObject);
-            }
-        }
-    }
-
-    private void RefreshHealthUI()
-    {
-        if (healthTracker != null)
-        {
-            healthTracker.UpdateSliderValue(currentHealth, unitMaxHealth);
-        }
-
-        if (!IsDead && currentHealth <= 0f)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        IsDead = true;
-        Unregister();
-        Destroy(gameObject);
     }
 }

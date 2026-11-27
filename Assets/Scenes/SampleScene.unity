@@ -2178,7 +2178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 474321782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebf25dcc89ce1674283e2a60c654db78, type: 3}
+  m_Script: {fileID: 11500000, guid: c76c2ad46213a75448b1ac398f01fbbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RTSCameraController
   cameraTransform: {fileID: 330585546}

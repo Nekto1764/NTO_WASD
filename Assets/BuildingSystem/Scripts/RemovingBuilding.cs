@@ -21,7 +21,6 @@ public class RemovingBuilding : MonoBehaviour
         highlightingBuildings.selectedData.RemoveObjectAt(gridPosition);
         placementSystem.objectPlacer.RemoveObjectAt(highlightingBuildings.gameObjectIndex);
 
-        highlightingBuildings.Actions.SetActive(false);
-        highlightingBuildings.BuyingSystem.SetActive(true);
+        highlightingBuildings.ActionButtons.SetActive(false);
     }
 }
