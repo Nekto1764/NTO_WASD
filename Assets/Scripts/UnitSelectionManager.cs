@@ -205,7 +205,10 @@ public class UnitSelectionManager : MonoBehaviour
 
     private void SelectUnit(GameObject unit, bool isSelected)
     {
-        TriggerSelectionIndicator(unit, isSelected);
+        if (!unit.GetComponent<Unit>().isGatherer)
+        {
+            TriggerSelectionIndicator(unit, isSelected);
+        }
         EnableUnitMovement(unit, isSelected);
     }
 

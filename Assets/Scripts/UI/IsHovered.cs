@@ -8,10 +8,14 @@ public class IsHovered : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerEnter(PointerEventData eventData)
     {
         isHovered = true;
+
+        // Debug.Log("is hovered");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         isHovered = false;
+
+        // Debug.Log("its not hovered");
     }
 }

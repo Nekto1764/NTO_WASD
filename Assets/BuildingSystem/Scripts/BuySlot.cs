@@ -10,11 +10,13 @@ public class BuySlot : MonoBehaviour
 
     public BuySystem buySystem;
 
+    public HighlightingBuildings highlightingBuildings;
+
     public int databaseItemID;
 
     public float trainingTime = 5;
 
-    // public BuildSlotProgress myBuildSlotProgress;
+    public BuildSlotProgress myBuildSlotProgress;
 
     // private bool isTraining = false;
     // private bool isReadyToPlace = false;
@@ -45,8 +47,10 @@ public class BuySlot : MonoBehaviour
             }
             else
             {
-                // myBuildSlotProgress.StartBuilding(trainingTime);
-                // StartCoroutine(buySystem.StartUnitTraining(databaseItemID, trainingTime));
+                ResourceManager.Instance.DecreaseResourcesBasedOnRequirement(buySystem.database.objectsData[databaseItemID]);
+
+                myBuildSlotProgress.StartBuilding(trainingTime);
+                buySystem.StartUnitTraining(databaseItemID, highlightingBuildings.gameObjectIndex, trainingTime);
             }
         }
     }

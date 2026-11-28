@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Finder : MonoBehaviour
 {
-    public float radius = 5f;
+    public float radius = 10f;
     public string targetTag;
 
     public List<GameObject> GetObjectsInRadius()

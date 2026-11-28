@@ -8,6 +8,7 @@ public class HighlightingBuildings : MonoBehaviour
 
     public GameObject BuyingSystem;
     public GameObject Actions;
+    public GameObject Barrack;
     public GridData selectedData;
 
     public int gameObjectIndex = -1;
@@ -16,7 +17,16 @@ public class HighlightingBuildings : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (Actions.activeInHierarchy)
+            if (BuyingSystem.activeInHierarchy)
+            {
+                bool isHovered = BuyingSystem.GetComponent<IsHovered>().isHovered;
+
+                if (!isHovered)
+                {
+                    OnAction();
+                }
+            }
+            else if (Actions.activeInHierarchy)
             {
                 bool isHovered = Actions.GetComponent<IsHovered>().isHovered;
 
@@ -25,9 +35,14 @@ public class HighlightingBuildings : MonoBehaviour
                     OnAction();
                 }
             }
-            else
+            else if (Barrack.activeInHierarchy)
             {
-                OnAction();
+                bool isHovered = Barrack.GetComponent<IsHovered>().isHovered;
+
+                if (!isHovered)
+                {
+                    OnAction();
+                }
             }
         }
     }
@@ -46,13 +61,10 @@ public class HighlightingBuildings : MonoBehaviour
 
         if (selectedData == null)
         {
-            bool isHovered = Actions.GetComponent<IsHovered>().isHovered;
+            Actions.SetActive(false);
+            Barrack.SetActive(false);
 
-            if (!isHovered)
-            {
-                Actions.SetActive(false);
-                BuyingSystem.SetActive(true);
-            }
+            BuyingSystem.SetActive(true);
         }
         else
         {
@@ -60,8 +72,23 @@ public class HighlightingBuildings : MonoBehaviour
             if (gameObjectIndex == -1)
                 return;
 
-            Actions.SetActive(true);
-            BuyingSystem.SetActive(false);
+            GameObject gameObject = placementSystem.objectPlacer.placedGameObjects[gameObjectIndex];
+            BuildingType selectedBuildingType = gameObject.GetComponent<Constructable>().buildingType;
+
+            if (selectedBuildingType == BuildingType.Barrack)
+            {
+                Barrack.SetActive(true);
+
+                BuyingSystem.SetActive(false);
+                Actions.SetActive(false);
+            }
+            else
+            {
+                Actions.SetActive(true);
+
+                BuyingSystem.SetActive(false);
+                Barrack.SetActive(false);
+            }
         }
     }
 }

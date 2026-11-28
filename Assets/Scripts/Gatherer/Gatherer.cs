@@ -142,7 +142,7 @@ public class Gatherer : MonoBehaviour
        
         while (CurrentCapacity > 0f)
         {
-            CurrentCapacity -= 1 * Time.deltaTime;
+            CurrentCapacity -= 2 * Time.deltaTime;
 
             if (CurrentCapacity < 0f)
             {

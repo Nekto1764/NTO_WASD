@@ -17,7 +17,7 @@ public class RTSCameraController : MonoBehaviour
     [Header("Keyboard Movement")]
     [SerializeField] private float fastSpeed = 0.05f;
     [SerializeField] private float normalSpeed = 0.01f;
-    [SerializeField] private float movementSensitivity = 1f;
+    [SerializeField] private float movementSensitivity = 2f;
 
     [Header("Edge Scrolling Movement")]
     [SerializeField] private float edgeSize = 50f;
@@ -172,7 +172,7 @@ public class RTSCameraController : MonoBehaviour
 
     private void HandleMouseDragInput()
     {
-        if (EventSystem.current.IsPointerOverGameObject()) return;
+        // if (EventSystem.current.IsPointerOverGameObject()) return;
 
         if (Input.GetMouseButtonDown(2) && TryGetMouseGroundPosition(out Vector3 start))
         {

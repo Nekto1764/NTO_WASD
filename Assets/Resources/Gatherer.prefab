@@ -753,8 +753,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Lumberjack
   assignedNode: {fileID: 0}
   gathererStructure: {fileID: 0}
-  harvestAmountPerSecond: 5
-  maxCapacity: 10
+  harvestAmountPerSecond: 6
+  maxCapacity: 6
   capacitySlider: {fileID: 7556134000913566751}
   currentResourceType: 0
 --- !u!135 &1469722071630219056
